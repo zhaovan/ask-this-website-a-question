@@ -1,50 +1,78 @@
 "use client";
 import { useState } from "react";
 import styles from "./page.module.css";
-
-const questions = [
-  {
-    number: 1,
-    title: "Intuition",
-    text: "When you sit quietly with this question, can you trust your gut and internal compass?",
-  },
-  {
-    number: 2,
-    title: "Resources",
-    text: "Do you have the time and money to give this question the attention it deserves?",
-  },
-  {
-    number: 3,
-    title: "Skills",
-    text: "Do you have the skills and knowledge to navigate this question?",
-  },
-  {
-    number: 4,
-    title: "Support",
-    text: "When you talk to those who matter most – your friends, family, and community – do you feel supported and understood?",
-  },
-  {
-    number: 5,
-    title: "Emotions",
-    text: "Do you feel emotionally prepared to face whatever truths and challenges may emerge when answering this question?",
-  },
-  {
-    number: 6,
-    title: "Impact",
-    text: "Have you considered how your decision might impact the people around you, the environment, or the future?",
-  },
-];
+import { questions, responses } from "./constants";
+import Question from "./components/question/question";
+import Button from "./components/button";
+import Answer from "./components/answer/answer";
 
 export default function Home() {
   const [question, setQuestion] = useState("");
-  const [questionResponses, setQuestionResponses] = useState("");
+  const [userResponse, setUserResponse] = useState("");
   const [stage, setStage] = useState(0);
+  const [isAnswering, setIsAnswering] = useState(false);
+  const [isFinished, setIsFinished] = useState(false);
+
+  function handleClickThrough(response) {
+    setUserResponse(userResponse + response);
+    // Last stage
+    if (stage === 5) {
+      setIsFinished(true);
+      return;
+    }
+
+    setStage(stage + 1);
+  }
+
+  function resetPrompt() {
+    setQuestion("");
+    setStage(0);
+    setIsAnswering(false);
+    setIsFinished(false);
+    setUserResponse("");
+  }
+
   return (
     <div>
-      <p>Should I </p>
-      <input type="text" />
-
-      <button>next</button>
+      <div className={styles.titleContainer}>
+        <h1>Ask this website a question</h1>
+      </div>
+      <div className={styles.container}>
+        {isAnswering ? (
+          !isFinished ? (
+            <Question
+              question={questions[stage]}
+              handleClick={handleClickThrough}
+            />
+          ) : (
+            <div>
+              <Answer
+                response={responses[userResponse]}
+                resetPrompt={resetPrompt}
+              />
+            </div>
+          )
+        ) : (
+          <div className={styles.textContainer}>
+            <div className={styles.questionContainer}>
+              <p>Should I </p>
+              <input
+                type="text"
+                onChange={(e) => setQuestion(e.target.value)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter") {
+                    setIsAnswering(true);
+                  }
+                }}
+                className={styles.input}
+                value={question}
+                placeholder="move to nyc?"
+              />
+            </div>
+            <Button onClick={() => setIsAnswering(true)}>Ponder further</Button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
