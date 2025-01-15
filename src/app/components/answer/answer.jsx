@@ -10,7 +10,14 @@ export default function Answer({ response, resetPrompt }) {
         <h2>{response.description}</h2>
         <p>Consider: {response.strategy}</p>
       </div>
-      <Button onClick={resetPrompt}>Ask another question...</Button>
+
+      <Button onClick={resetPrompt}>Do you feel good about your answer?</Button>
+      <Button onClick={resetPrompt}>
+        Do you have a new question in light of this answer?
+      </Button>
+      <Button onClick={resetPrompt}>
+        Do you want to let go of your question?
+      </Button>
     </div>
   );
 }

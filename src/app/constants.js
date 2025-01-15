@@ -1,3 +1,12 @@
+export const placeholders = [
+  "move to nyc?",
+  "break up with my boyfriend?",
+  "buy this new jacket?",
+  "center the universe?",
+  "quit my job?",
+  "go to grad school?",
+];
+
 export const questions = [
   {
     number: 1,
@@ -27,7 +36,7 @@ export const questions = [
   {
     number: 6,
     title: "Impact",
-    text: "Have you considered how your decision might impact the people around you, the environment, or the future?",
+    text: "Will your decision impact the people around you, the environment, or the future?",
   },
 ];
 

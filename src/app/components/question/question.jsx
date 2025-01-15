@@ -3,8 +3,16 @@ import Button from "../button";
 import styles from "./style.module.css";
 import { AnimatePresence, motion } from "motion/react";
 
-export default function Question({ question, handleClick }) {
-  const [, forceUpdate] = useReducer((x) => x + 1, 0);
+export default function Question({
+  question,
+  handleClick,
+  handleBack,
+  userQuestion,
+}) {
+  const replacedQuestion = question.text.replace(
+    "this question",
+    `"Should I ${userQuestion}"`
+  );
   return (
     <AnimatePresence>
       <motion.div
@@ -14,15 +22,15 @@ export default function Question({ question, handleClick }) {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.75 }}
       >
+        <Button onClick={handleBack}>Back</Button>
         <div>
           <h1>{question.title}</h1>
-          <p>{question.text}</p>
+          <p>{replacedQuestion}</p>
         </div>
         <div className={styles.buttonContainer}>
           <Button
             onClick={() => {
               handleClick("N");
-              forceUpdate();
             }}
           >
             No
@@ -30,7 +38,6 @@ export default function Question({ question, handleClick }) {
           <Button
             onClick={() => {
               handleClick("Y");
-              forceUpdate();
             }}
           >
             Yes
