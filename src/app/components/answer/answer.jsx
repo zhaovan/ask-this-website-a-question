@@ -1,11 +1,16 @@
 import React from "react";
 import Button from "../button";
-
+import { motion } from "motion/react";
 import styles from "../question/style.module.css";
 
 export default function Answer({ response, resetPrompt }) {
   return (
-    <div className={styles.container}>
+    <motion.div
+      className={styles.container}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.75 }}
+    >
       <div>
         <h2>{response.description}</h2>
         <p>Consider: {response.strategy}</p>
@@ -18,6 +23,6 @@ export default function Answer({ response, resetPrompt }) {
       <Button onClick={resetPrompt}>
         Do you want to let go of your question?
       </Button>
-    </div>
+    </motion.div>
   );
 }
