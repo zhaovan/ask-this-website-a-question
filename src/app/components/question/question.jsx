@@ -2,6 +2,7 @@ import React, { useReducer } from "react";
 import Button from "../button";
 import styles from "./style.module.css";
 import { AnimatePresence, motion } from "motion/react";
+import Typewriter from "../typewriter/typewriter";
 
 export default function Question({
   question,
@@ -24,8 +25,12 @@ export default function Question({
       >
         <Button onClick={handleBack}>Back</Button>
         <div>
-          <h1>{question.title}</h1>
-          <p>{replacedQuestion}</p>
+          <h1>
+            <Typewriter text={question.title} delay={50} />
+          </h1>
+          <p>
+            <Typewriter text={replacedQuestion} delay={50} />
+          </p>
         </div>
         <div className={styles.buttonContainer}>
           <Button
