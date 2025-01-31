@@ -6,6 +6,7 @@ import Question from "@/app/components/question/question";
 import Button from "@/app/components/button";
 import Answer from "@/app/components/answer/answer";
 import { motion } from "motion/react";
+import { COOL_COLORS, WARM_COLORS } from "@/app/constants";
 
 export default function Questions() {
   const [question, setQuestion] = useState("");
@@ -13,10 +14,17 @@ export default function Questions() {
   const [stage, setStage] = useState(0);
   const [isAnswering, setIsAnswering] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
+  const [answerColorYes, setAnswerColorYes] = useState(0);
+  const [answerColorNo, setAnswerColorNo] = useState(0);
 
   const [placeholderText, setPlaceholderText] = useState(placeholders[0]);
 
   function handleClickThrough(response) {
+    if (response === "Y") {
+      setAnswerColorYes(answerColorYes + 1);
+    } else {
+      setAnswerColorNo(answerColorNo + 1);
+    }
     setUserResponse(userResponse + response);
     // Last stage
     if (stage === 5) {
@@ -33,6 +41,8 @@ export default function Questions() {
     setIsAnswering(false);
     setIsFinished(false);
     setUserResponse("");
+    setAnswerColorNo(0);
+    setAnswerColorYes(0);
   }
 
   function handleBack() {
@@ -56,7 +66,13 @@ export default function Questions() {
 
   return (
     <div>
-      <div className={styles.container}>
+      <div
+        className={styles.container}
+        style={{
+          "--answer-color-yes": WARM_COLORS[answerColorYes],
+          "--answer-color-no": COOL_COLORS[answerColorNo],
+        }}
+      >
         {isAnswering ? (
           !isFinished ? (
             <>

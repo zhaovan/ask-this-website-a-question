@@ -1,19 +1,26 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 
-export default function Typewriter({ text, delay = 0 }) {
-  const [currentText, setCurrentText] = useState("");
-  const [currentIndex, setCurrentIndex] = useState(0);
+const Typewriter = ({ text, typingSpeed = 100, startDelay = 1000 }) => {
+  const [displayedText, setDisplayedText] = useState("");
+
   useEffect(() => {
-    if (currentIndex < text.length) {
-      const timeout = setTimeout(() => {
-        setCurrentText((prevText) => prevText + text[currentIndex]);
-        setCurrentIndex((prevIndex) => prevIndex + 1);
-      }, delay);
+    const typeText = async () => {
+      let index = 0;
+      while (index < text.length) {
+        setDisplayedText((prev) => prev + text[index]);
+        index++;
+        await new Promise((resolve) => setTimeout(resolve, typingSpeed));
+      }
+    };
 
-      return () => clearTimeout(timeout);
-    }
-  }, [currentIndex, delay, text]);
+    const startTypingWithDelay = setTimeout(() => {
+      typeText();
+    }, startDelay);
 
-  return <span>{currentText}</span>;
-}
+    return () => clearTimeout(startTypingWithDelay);
+  }, [text, typingSpeed, startDelay]);
+
+  return <span>{displayedText}</span>;
+};
+
+export default Typewriter;

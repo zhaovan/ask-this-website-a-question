@@ -1,3 +1,7 @@
+export const COOL_COLORS = ["var(--background)", "#006cd1", "#0060bc", "#0054a7", "#004992", "#003c7a", "#002f61"];
+
+export const WARM_COLORS = ["var(--background)", "#e2bf8d", "#daae70", "#d29e52", "#cb8c34", "#b67e2f", "#a2702a"];
+
 export const placeholders = [
   "move to nyc?",
   "break up with my boyfriend?",

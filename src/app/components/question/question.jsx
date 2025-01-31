@@ -2,7 +2,7 @@ import React, { useReducer } from "react";
 import Button from "../button";
 import styles from "./style.module.css";
 import { AnimatePresence, motion } from "motion/react";
-import Typewriter from "../typewriter/typewriter";
+// import Typewriter from "../typewriter/typewriter";
 
 export default function Question({
   question,
@@ -25,14 +25,27 @@ export default function Question({
       >
         <Button onClick={handleBack}>Back</Button>
         <div>
-          <h1>
-            <Typewriter text={question.title} delay={50} />
-          </h1>
-          <p>
-            <Typewriter text={replacedQuestion} delay={50} />
-          </p>
+          <motion.h1
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            delay={0.5}
+          >
+            {question.title}
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.75 }}
+          >
+            {replacedQuestion}
+          </motion.p>
         </div>
-        <div className={styles.buttonContainer}>
+        <motion.div
+          className={styles.buttonContainer}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          delay={1}
+        >
           <Button
             onClick={() => {
               handleClick("N");
@@ -47,7 +60,7 @@ export default function Question({
           >
             Yes
           </Button>
-        </div>
+        </motion.div>
       </motion.div>
     </AnimatePresence>
   );
