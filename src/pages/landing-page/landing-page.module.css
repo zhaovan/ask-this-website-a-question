@@ -30,6 +30,36 @@
 
 .circleText {
   position: absolute;
-  bottom: 15vh;
-  left: 10vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.circle {
+  --size: 200px;
+  animation: pulseColor 6s infinite;
+  filter: blur(50px);
+  background-color: #183fda;
+  height: var(--size);
+  width: var(--size);
+  border-radius: 100%;
+  position: absolute;
+  left: calc(var(--size) / -2);
+  top: calc(var(--size) / -2);
+}
+
+@keyframes pulseColor {
+  0% {
+    background-color: #ae5552;
+  }
+  33% {
+    background-color: #ff0000;
+  }
+  66% {
+    background-color: #183fda;
+  }
+  100% {
+    background-color: #ae5552;
+  }
 }

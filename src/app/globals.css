@@ -1,21 +1,30 @@
 @font-face {
-  font-family: "AgletSans";
-  src: url("/AgletSans-Regular.otf");
+  font-family: "NeueBit";
+  src: url("/PPNeueBit-Bold.otf");
+}
+
+@font-face {
+  font-family: "Cursive";
+  src: url("/americancursive.ttf");
 }
 
 :root {
-  --background: #f9eee7;
+  --background: #342d28;
 }
 
 html,
 body {
   max-width: 100vw;
   min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
   background-color: var(--background);
 }
 
 p {
-  font-family: "AgletSans", Helvetica, Arial, sans-serif;
+  font-family: "Cursive", Helvetica, Arial, sans-serif;
+  font-size: 36px;
+  color: #e7e0d3;
 }
 
 *,
@@ -71,10 +80,11 @@ h6 {
 input {
   border: none;
   padding: 0;
-  font-size: 1rem;
+  font-size: 2.25rem;
   padding-bottom: 0.25rem;
   border-bottom: 1px solid gray;
   background-color: inherit;
+  font-family: "Cursive";
 }
 
 input:focus {

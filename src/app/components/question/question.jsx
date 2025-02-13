@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import Button from "../button";
+import Button from "../../button";
 import styles from "./style.module.css";
 import { AnimatePresence, motion } from "motion/react";
 // import Typewriter from "../typewriter/typewriter";
@@ -14,37 +14,34 @@ export default function Question({
     "this question",
     `"Should I ${userQuestion}"`
   );
+
   return (
     <AnimatePresence>
-      <motion.div
-        key={question.title}
-        className={styles.container}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.75 }}
-      >
-        <Button onClick={handleBack}>Back</Button>
+      <div className={styles.container}>
         <div>
-          <motion.h1
+          <span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            delay={0.5}
+            transition={{ delay: 4 }}
           >
+            <Button onClick={handleBack}>Back</Button>
+          </span>
+          <h1 initial={{ opacity: 0 }} animate={{ opacity: 1 }} delay={1}>
             {question.title}
-          </motion.h1>
-          <motion.p
+          </h1>
+          <p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.75 }}
+            transition={{ delay: 2 }}
           >
             {replacedQuestion}
-          </motion.p>
+          </p>
         </div>
-        <motion.div
+        <div
           className={styles.buttonContainer}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          delay={1}
+          transition={{ delay: 4 }}
         >
           <Button
             onClick={() => {
@@ -60,8 +57,8 @@ export default function Question({
           >
             Yes
           </Button>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </AnimatePresence>
   );
 }

@@ -1,10 +1,10 @@
 .textRing {
   position: relative;
-  animation: spin 6s infinite linear;
+  animation: spin 20s infinite linear;
 }
 
 .textRing [style*="--index"] {
-  --font-size: 2;
+  --font-size: 4;
   --inner-angle: calc((360 / var(--total)) * 1deg);
   --radius: calc((var(--character-width, 1) / sin(var(--inner-angle))) * -1ch);
   /* font-weight: bold; */

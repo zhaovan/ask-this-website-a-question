@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import styles from "./questions.module.css";
 import { questions, responses, placeholders } from "@/app/constants";
 import Question from "@/app/components/question/question";
-import Button from "@/app/components/button";
+import Button from "@/app/button";
 import Answer from "@/app/components/answer/answer";
 import { motion } from "motion/react";
 import { COOL_COLORS, WARM_COLORS } from "@/app/constants";
@@ -75,14 +75,12 @@ export default function Questions() {
       >
         {isAnswering ? (
           !isFinished ? (
-            <>
-              <Question
-                question={questions[stage]}
-                userQuestion={question}
-                handleBack={handleBack}
-                handleClick={handleClickThrough}
-              />
-            </>
+            <Question
+              question={questions[stage]}
+              userQuestion={question}
+              handleBack={handleBack}
+              handleClick={handleClickThrough}
+            />
           ) : (
             <div>
               <Answer
@@ -114,6 +112,15 @@ export default function Questions() {
               />
             </div>
             <Button onClick={() => setIsAnswering(true)}>Ponder further</Button>
+            <Button
+              onClick={() => {
+                setUserResponse("YYYYYY");
+                setIsAnswering(true);
+                setIsFinished(true);
+              }}
+            >
+              jump to end
+            </Button>
           </motion.div>
         )}
       </div>

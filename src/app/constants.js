@@ -1,12 +1,39 @@
-export const COOL_COLORS = ["var(--background)", "#006cd1", "#0060bc", "#0054a7", "#004992", "#003c7a", "#002f61"];
+export const COOL_COLORS = [
+  "var(--background)",
+  "#EBE9EA",
+  "#DEE4EE",
+  "#D0DFF1",
+  "#C2DBF5",
+  "#B4D6F8",
+  "#A7D1FC",
+  "#99CCFF",
+];
 
-export const WARM_COLORS = ["var(--background)", "#e2bf8d", "#daae70", "#d29e52", "#cb8c34", "#b67e2f", "#a2702a"];
+export const WARM_COLORS = [
+  "var(--background)",
+  "#e2bf8d",
+  "#daae70",
+  "#d29e52",
+  "#cb8c34",
+  "#b67e2f",
+  "#a2702a",
+];
+
+export const LANDING_PAGE_COLORS = [
+  "#FFF9B1",
+  "#B5EAD7",
+  "#A7C7E7",
+  "#FFADAD",
+  "#D4A5E6",
+];
 
 export const placeholders = [
   "move to nyc?",
   "break up with my boyfriend?",
   "buy this new jacket?",
-  "center the universe?",
+  "how can i find joy?",
+  "should I make this purchase?",
+  "how do i find my person?",
   "quit my job?",
   "go to grad school?",
 ];
