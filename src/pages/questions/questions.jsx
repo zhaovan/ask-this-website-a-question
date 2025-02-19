@@ -1,12 +1,9 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./questions.module.css";
-import { questions, responses, placeholders } from "@/app/constants";
-import Question from "@/app/components/question/question";
-
-import Answer from "@/app/components/answer/answer";
-import { AnimatePresence, motion } from "motion/react";
-import { COOL_COLORS, WARM_COLORS } from "@/app/constants";
+import { questions, responses } from "@/app/constants";
+import Question from "../../app/components/question/question";
+import Answer from "../../app/components/answer/answer";
 
 export default function Questions({ question, setQuestion, setIsAnswering }) {
   const [userResponse, setUserResponse] = useState("");

@@ -1,11 +1,11 @@
 "use client";
 
-import LandingPage from "@/pages/landing-page/landing-page";
-import Questions from "@/pages/questions/questions";
+import LandingPage from "../pages/landing-page/landing-page";
+import Questions from "../pages/questions/questions";
 import { useState } from "react";
 import styles from "./page.module.css";
 import { AnimatePresence } from "motion/react";
-import GradientLanding from "@/pages/gradient-page/gradient-page";
+import GradientLanding from "../pages/gradient-page/gradient-page";
 import Image from "next/image";
 import { motion } from "motion/react";
 import { placeholders, LANDING_PAGE_COLORS } from "@/app/constants";
