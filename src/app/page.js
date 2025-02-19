@@ -8,7 +8,7 @@ import { AnimatePresence } from "motion/react";
 import GradientLanding from "../pages/gradient-page/gradient-page";
 import Image from "next/image";
 import { motion } from "motion/react";
-import { placeholders, LANDING_PAGE_COLORS } from "@/app/constants";
+import { placeholders, LANDING_PAGE_COLORS } from "../app/constants";
 // import rain from "@/../public/rain.gif";
 
 const placeholderQuestions = placeholders
