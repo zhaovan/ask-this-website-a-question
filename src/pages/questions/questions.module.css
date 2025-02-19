@@ -1,6 +1,6 @@
 .container {
   height: 100vh;
-  padding: 30vh 30vw;
+  padding: 30vh 25vw;
   background: linear-gradient(
     -45deg,
     var(--answer-color-yes) -20%,
