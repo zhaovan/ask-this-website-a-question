@@ -7,13 +7,13 @@ export default function Answer({ response, resetPrompt }) {
   return (
     <div className={styles.container}>
       <div>
-        <motion.h2
+        <motion.h1
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
         >
           {response.description}
-        </motion.h2>
+        </motion.h1>
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

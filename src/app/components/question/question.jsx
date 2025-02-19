@@ -16,49 +16,53 @@ export default function Question({
   );
 
   return (
-    <AnimatePresence>
-      <div className={styles.container}>
-        <div>
-          <span
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 4 }}
-          >
-            <Button onClick={handleBack}>Back</Button>
-          </span>
-          <h1 initial={{ opacity: 0 }} animate={{ opacity: 1 }} delay={1}>
-            {question.title}
-          </h1>
-          <p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2 }}
-          >
-            {replacedQuestion}
-          </p>
-        </div>
-        <div
-          className={styles.buttonContainer}
+    <div className={styles.container} key={question.number}>
+      <div className={styles.textContainer}>
+        <motion.span
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 4 }}
         >
-          <Button
-            onClick={() => {
-              handleClick("N");
-            }}
+          <Button onClick={handleBack}>Back</Button>
+        </motion.span>
+        <span>
+          <motion.h1
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5 }}
           >
-            No
-          </Button>
-          <Button
-            onClick={() => {
-              handleClick("Y");
-            }}
+            {question.title}
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 3 }}
           >
-            Yes
-          </Button>
-        </div>
+            {replacedQuestion}
+          </motion.p>
+        </span>
       </div>
-    </AnimatePresence>
+      <motion.div
+        className={styles.buttonContainer}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 4 }}
+      >
+        <Button
+          onClick={() => {
+            handleClick("N");
+          }}
+        >
+          No
+        </Button>
+        <Button
+          onClick={() => {
+            handleClick("Y");
+          }}
+        >
+          Yes
+        </Button>
+      </motion.div>
+    </div>
   );
 }

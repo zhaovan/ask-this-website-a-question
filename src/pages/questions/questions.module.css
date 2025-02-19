@@ -1,26 +1,30 @@
 .container {
   height: 100vh;
-  padding: 20vh 25vw;
-  background: linear-gradient(-45deg, var(--answer-color-yes) -20%, var(--background), var(--answer-color-no));
+  padding: 30vh 30vw;
+  background: linear-gradient(
+    -45deg,
+    var(--answer-color-yes) -20%,
+    var(--background),
+    var(--answer-color-no)
+  );
   animation: gradient 5s ease infinite;
   background-size: 400% 400%;
 }
 
 @keyframes gradient {
-	0% {
+  0% {
     /* background-size: 100% 100%; */
-		background-position: 0% 50%;
-	}
-	50% {
+    background-position: 0% 50%;
+  }
+  50% {
     /* background-size: 150% 150%; */
-		background-position: 100% 50%;
-	}
-	100% {
+    background-position: 100% 50%;
+  }
+  100% {
     /* background-size: 200% 200%; */
-		background-position: 0% 50%;
-	}
+    background-position: 0% 50%;
+  }
 }
-
 
 .textContainer {
   display: flex;

@@ -3,21 +3,18 @@ import { useEffect, useState } from "react";
 import styles from "./questions.module.css";
 import { questions, responses, placeholders } from "@/app/constants";
 import Question from "@/app/components/question/question";
-import Button from "@/app/button";
+
 import Answer from "@/app/components/answer/answer";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { COOL_COLORS, WARM_COLORS } from "@/app/constants";
 
-export default function Questions() {
-  const [question, setQuestion] = useState("");
+export default function Questions({ question, setQuestion, setIsAnswering }) {
   const [userResponse, setUserResponse] = useState("");
   const [stage, setStage] = useState(0);
-  const [isAnswering, setIsAnswering] = useState(false);
+
   const [isFinished, setIsFinished] = useState(false);
   const [answerColorYes, setAnswerColorYes] = useState(0);
   const [answerColorNo, setAnswerColorNo] = useState(0);
-
-  const [placeholderText, setPlaceholderText] = useState(placeholders[0]);
 
   function handleClickThrough(response) {
     if (response === "Y") {
@@ -54,76 +51,31 @@ export default function Questions() {
     }
   }
 
-  useEffect(() => {
-    const timeoutId = setInterval(() => {
-      const randIndex = Math.round(Math.random() * (placeholders.length - 1));
-      setPlaceholderText(placeholders[randIndex]);
-    }, 2000);
-    return () => {
-      clearInterval(timeoutId);
-    };
-  }, []);
-
   return (
-    <div>
-      <div
-        className={styles.container}
-        style={{
-          "--answer-color-yes": WARM_COLORS[answerColorYes],
-          "--answer-color-no": COOL_COLORS[answerColorNo],
-        }}
-      >
-        {isAnswering ? (
-          !isFinished ? (
-            <Question
-              question={questions[stage]}
-              userQuestion={question}
-              handleBack={handleBack}
-              handleClick={handleClickThrough}
-            />
-          ) : (
-            <div>
-              <Answer
-                response={responses[userResponse]}
-                resetPrompt={resetPrompt}
-              />
-            </div>
-          )
-        ) : (
-          <motion.div
-            className={styles.textContainer}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.75 }}
-          >
-            <div className={styles.questionContainer}>
-              <p>Should I </p>
-              <input
-                type="text"
-                onChange={(e) => setQuestion(e.target.value)}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter") {
-                    setIsAnswering(true);
-                  }
-                }}
-                className={styles.input}
-                value={question}
-                placeholder={placeholderText}
-              />
-            </div>
-            <Button onClick={() => setIsAnswering(true)}>Ponder further</Button>
-            <Button
-              onClick={() => {
-                setUserResponse("YYYYYY");
-                setIsAnswering(true);
-                setIsFinished(true);
-              }}
-            >
-              jump to end
-            </Button>
-          </motion.div>
-        )}
-      </div>
+    <div
+      className={styles.container}
+      style={
+        {
+          // "--answer-color-yes": WARM_COLORS[answerColorYes],
+          // "--answer-color-no": COOL_COLORS[answerColorNo],
+        }
+      }
+    >
+      {!isFinished ? (
+        <Question
+          question={questions[stage]}
+          userQuestion={question}
+          handleBack={handleBack}
+          handleClick={handleClickThrough}
+        />
+      ) : (
+        <div>
+          <Answer
+            response={responses[userResponse]}
+            resetPrompt={resetPrompt}
+          />
+        </div>
+      )}
     </div>
   );
 }

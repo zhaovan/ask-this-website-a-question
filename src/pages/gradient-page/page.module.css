@@ -65,17 +65,37 @@
   height: 200px;
   position: absolute;
   top: -220%;
-  /* left: -50%; */
-  /* transform: translate(-50%, -50%); */
+  opacity: 0.2;
 
   border-radius: 50%;
 
   animation: firework 6s ease-out forwards infinite;
   z-index: 1;
+  filter: blur(60px);
+  /* opacity: ; */
 }
 
 .text {
   position: relative;
   z-index: 2;
   font-size: 1.5rem;
+}
+
+.submitButton {
+  background-color: inherit;
+  color: antiquewhite;
+  border: none;
+  /* padding: 0.5rem 1rem; */
+  padding: 0;
+  filter: none;
+
+  cursor: pointer;
+  /* font-family: "Cursive"; */
+  font-size: 2rem;
+  line-height: 1;
+  position: unset;
+}
+
+.submitButton:hover {
+  background-color: inherit;
 }

@@ -10,6 +10,8 @@
 
 :root {
   --background: #342d28;
+  --button-background: #828282;
+  --button-background-shadow: #434343;
 }
 
 html,
@@ -21,9 +23,17 @@ body {
   background-color: var(--background);
 }
 
+h1 {
+  font-family: "Cursive", Helvetica, Arial, sans-serif;
+  font-size: 48px;
+  color: #e7e0d3;
+  line-height: 1;
+}
+
 p {
   font-family: "Cursive", Helvetica, Arial, sans-serif;
-  font-size: 36px;
+  font-size: 32px;
+  line-height: 1.25;
   color: #e7e0d3;
 }
 
@@ -92,15 +102,24 @@ input:focus {
 }
 
 button {
-  background-color: #e7e0d3;
+  background-color: var(--button-background);
   border: none;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-family: "NeueBit", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+    sans-serif;
   cursor: pointer;
   padding: 0.5rem 1rem;
   transition: background-color 150ms ease-out;
   border-radius: 0.25rem;
+
+  font-size: 1.25rem;
+  color: #e7e0d3;
+  filter: drop-shadow(0px 8px var(--button-background-shadow));
+  position: relative;
+  top: 0px;
 }
 
 button:hover {
-  background-color: #d5cfc3;
+  filter: drop-shadow(0 0 var(--button-background-shadow));
+  top: 8px;
+  transition: top 50ms ease-out;
 }
