@@ -59,10 +59,12 @@
 }
 
 .firework {
-  width: 100%;
-  height: 200px;
+  --width: 0px;
+  width: calc(var(--width) * 1px);
+  height: calc(var(--width) * 1px);
   position: absolute;
-  top: -220%;
+  top: calc(var(--width) * -1 / 2 * 1px);
+  left: calc(var(--width) * -1 / 3 * 1px);
   opacity: 0.2;
 
   border-radius: 50%;

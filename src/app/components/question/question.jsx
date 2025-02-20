@@ -2,6 +2,7 @@ import React, { useReducer } from "react";
 import Button from "../../button";
 import styles from "./style.module.css";
 import { AnimatePresence, motion } from "motion/react";
+import Typewriter from "../typewriter/typewriter";
 // import Typewriter from "../typewriter/typewriter";
 
 export default function Question({
@@ -38,7 +39,7 @@ export default function Question({
             animate={{ opacity: 1 }}
             transition={{ delay: 3 }}
           >
-            {replacedQuestion}
+            <Typewriter startDelay={3000} text={replacedQuestion} />
           </motion.p>
         </span>
       </div>

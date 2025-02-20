@@ -14,11 +14,17 @@ const placeholderQuestions = placeholders
   .sort(() => Math.random() - Math.random())
   .slice(0, 5);
 
+function randomIntFromInterval(min, max) {
+  // min and max included
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
 const calculatedPositions = placeholders.map(() => {
   return {
     left: Math.round(Math.random() * 10),
     top: Math.round(Math.random() * 90),
     animationDelay: Math.random() * 5,
+    width: randomIntFromInterval(200, 600),
   };
 });
 
@@ -40,6 +46,7 @@ export default function Home() {
             left: randomLeft,
             top: randomTop,
             animationDelay: randomAnimationDelay,
+            width,
           } = calculatedPositions[idx];
 
           return (
@@ -56,11 +63,8 @@ export default function Home() {
               <p className={styles.text}>{placeholder}</p>
               <div
                 style={{
-                  background: `radial-gradient(
-                circle,
-                ${LANDING_PAGE_COLORS[idx]} 10%,
-                rgba(238, 238, 228, 0) 80%
-              )`,
+                  "--width": width,
+                  background: `radial-gradient(circle, ${LANDING_PAGE_COLORS[idx]} 10%, rgba(238, 238, 228, 0) 80%)`,
                   animationDelay: `${randomAnimationDelay}s`,
                 }}
                 suppressHydrationWarning
