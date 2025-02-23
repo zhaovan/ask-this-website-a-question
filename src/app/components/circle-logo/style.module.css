@@ -1,12 +1,15 @@
 .textRing {
   position: relative;
+  letter-spacing: 1.5ch;
   animation: spin 20s infinite linear;
 }
 
 .textRing [style*="--index"] {
   --font-size: 4;
   --inner-angle: calc((360 / var(--total)) * 1deg);
-  --radius: calc((var(--character-width, 1) / sin(var(--inner-angle))) * -1ch);
+  --radius: calc(
+    (var(--character-width, 1) / sin(var(--inner-angle))) * -1.5ch
+  );
   /* font-weight: bold; */
   /* font-family: monospace; */
   /* text-transform: uppercase; */

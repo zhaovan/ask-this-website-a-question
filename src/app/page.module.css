@@ -63,8 +63,8 @@
   width: calc(var(--width) * 1px);
   height: calc(var(--width) * 1px);
   position: absolute;
-  top: calc(var(--width) * -1 / 2 * 1px);
-  left: calc(var(--width) * -1 / 3 * 1px);
+  top: calc(var(--width) * -1px / 2);
+  left: calc(var(--width) * -1px / 3);
   opacity: 0.2;
 
   border-radius: 50%;
@@ -82,8 +82,7 @@
 }
 
 .placeholderBlob {
-  position: relative;
-  display: inline-block;
+  position: absolute;
   text-align: center;
   width: fit-content;
 

@@ -30,7 +30,8 @@ h1 {
   line-height: 1;
 }
 
-p {
+p,
+span {
   font-family: "NeueBit", Helvetica, Arial, sans-serif;
   font-size: 32px;
   line-height: 1.25;

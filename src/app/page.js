@@ -7,7 +7,7 @@ import styles from "./page.module.css";
 
 import GradientLanding from "../pages/gradient-page/gradient-page";
 import Image from "next/image";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { placeholders, LANDING_PAGE_COLORS } from "../app/constants";
 
 const placeholderQuestions = placeholders
@@ -78,24 +78,25 @@ export default function Home() {
             </motion.div>
           );
         })}
-
-      {landingOpened ? (
-        isAnswering ? (
-          <Questions
-            setQuestion={setQuestion}
-            setIsAnswering={setIsAnswering}
-          />
+      <AnimatePresence>
+        {landingOpened ? (
+          isAnswering ? (
+            <Questions
+              setQuestion={setQuestion}
+              setIsAnswering={setIsAnswering}
+            />
+          ) : (
+            <GradientLanding
+              key="gradient"
+              question={question}
+              setQuestion={setQuestion}
+              setIsAnswering={setIsAnswering}
+            />
+          )
         ) : (
-          <GradientLanding
-            key="gradient"
-            question={question}
-            setQuestion={setQuestion}
-            setIsAnswering={setIsAnswering}
-          />
-        )
-      ) : (
-        <></>
-      )}
+          <></>
+        )}
+      </AnimatePresence>
       {!landingOpened && (
         <LandingPage key="landing" handleClick={() => setLandingOpened(true)} />
       )}

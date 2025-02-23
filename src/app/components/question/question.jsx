@@ -35,7 +35,7 @@ export default function Question({
             {question.title}
           </motion.h1>
 
-          <motion.p
+          <motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 2.5 }}
@@ -49,7 +49,7 @@ export default function Question({
                 typewriter.pauseFor(2500).typeString(replacedQuestion).start();
               }}
             />
-          </motion.p>
+          </motion.span>
         </div>
       </div>
 
