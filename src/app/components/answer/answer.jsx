@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../../button";
 import { motion } from "motion/react";
-import styles from "../question/style.module.css";
+import styles from "./styles.module.css";
 
 export default function Answer({ response, resetPrompt }) {
   return (
@@ -23,34 +23,30 @@ export default function Answer({ response, resetPrompt }) {
         </motion.p>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 4 }}
-      >
-        <Button onClick={resetPrompt}>
-          Do you feel good about your question?
-        </Button>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 5 }}
-      >
-        <Button onClick={resetPrompt}>
-          Do you have a new question in light of this answer?
-        </Button>
-      </motion.div>
+      <div className={styles.questionContainer}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 4 }}
+        >
+          <Button onClick={resetPrompt}>I feel good about my question</Button>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 5 }}
+        >
+          <Button onClick={resetPrompt}>I have a new question</Button>
+        </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 6 }}
-      >
-        <Button onClick={resetPrompt}>
-          Do you want to let go of your question?
-        </Button>
-      </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 6 }}
+        >
+          <Button onClick={resetPrompt}>I want to let go of my question</Button>
+        </motion.div>
+      </div>
     </div>
   );
 }

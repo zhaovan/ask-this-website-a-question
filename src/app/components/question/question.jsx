@@ -1,9 +1,9 @@
-import React, { useReducer } from "react";
+import React from "react";
 import Button from "../../button";
 import styles from "./style.module.css";
-import { AnimatePresence, motion } from "motion/react";
-import Typewriter from "../typewriter/typewriter";
-// import Typewriter from "../typewriter/typewriter";
+import { motion } from "motion/react";
+
+import TypewriterComponent from "typewriter-effect";
 
 export default function Question({
   question,
@@ -22,11 +22,11 @@ export default function Question({
         <motion.span
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 4 }}
+          transition={{ delay: 8 }}
         >
           <Button onClick={handleBack}>Back</Button>
         </motion.span>
-        <span>
+        <div>
           <motion.h1
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -34,20 +34,30 @@ export default function Question({
           >
             {question.title}
           </motion.h1>
+
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 3 }}
+            transition={{ delay: 2.5 }}
           >
-            <Typewriter startDelay={3000} text={replacedQuestion} />
+            <TypewriterComponent
+              options={{
+                cursor: "",
+                delay: 50,
+              }}
+              onInit={(typewriter) => {
+                typewriter.pauseFor(2500).typeString(replacedQuestion).start();
+              }}
+            />
           </motion.p>
-        </span>
+        </div>
       </div>
+
       <motion.div
         className={styles.buttonContainer}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 4 }}
+        transition={{ delay: 8 }}
       >
         <Button
           onClick={() => {

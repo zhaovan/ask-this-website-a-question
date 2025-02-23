@@ -4,7 +4,7 @@ import LandingPage from "../pages/landing-page/landing-page";
 import Questions from "../pages/questions/questions";
 import { useState } from "react";
 import styles from "./page.module.css";
-import { AnimatePresence } from "motion/react";
+
 import GradientLanding from "../pages/gradient-page/gradient-page";
 import Image from "next/image";
 import { motion } from "motion/react";
@@ -32,13 +32,18 @@ export default function Home() {
   const [landingOpened, setLandingOpened] = useState(false);
   const [question, setQuestion] = useState("");
   const [isAnswering, setIsAnswering] = useState(false);
-  // const
 
   return (
-    <AnimatePresence mode="wait">
+    <div>
       <div className={styles.imageContainer}>
-        <Image src="/rain.gif" layout="fill" alt="rain falling down gif" />
+        <Image
+          src="/rain.gif"
+          layout="fill"
+          alt="rain falling down gif"
+          unoptimized
+        />
       </div>
+
       {landingOpened &&
         !isAnswering &&
         placeholderQuestions.map((placeholder, idx) => {
@@ -94,6 +99,6 @@ export default function Home() {
       {!landingOpened && (
         <LandingPage key="landing" handleClick={() => setLandingOpened(true)} />
       )}
-    </AnimatePresence>
+    </div>
   );
 }

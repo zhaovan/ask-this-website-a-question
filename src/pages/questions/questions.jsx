@@ -1,9 +1,10 @@
 "use client";
 import { useState } from "react";
 import styles from "./questions.module.css";
-import { questions, responses } from "@/app/constants";
+import { questions, responses } from "../../app/constants";
 import Question from "../../app/components/question/question";
 import Answer from "../../app/components/answer/answer";
+import { AnimatePresence } from "motion/react";
 
 export default function Questions({ question, setQuestion, setIsAnswering }) {
   const [userResponse, setUserResponse] = useState("");
@@ -49,30 +50,32 @@ export default function Questions({ question, setQuestion, setIsAnswering }) {
   }
 
   return (
-    <div
-      className={styles.container}
-      style={
-        {
-          // "--answer-color-yes": WARM_COLORS[answerColorYes],
-          // "--answer-color-no": COOL_COLORS[answerColorNo],
+    <AnimatePresence>
+      <div
+        className={styles.container}
+        style={
+          {
+            // "--answer-color-yes": WARM_COLORS[answerColorYes],
+            // "--answer-color-no": COOL_COLORS[answerColorNo],
+          }
         }
-      }
-    >
-      {!isFinished ? (
-        <Question
-          question={questions[stage]}
-          userQuestion={question}
-          handleBack={handleBack}
-          handleClick={handleClickThrough}
-        />
-      ) : (
-        <div>
-          <Answer
-            response={responses[userResponse]}
-            resetPrompt={resetPrompt}
+      >
+        {!isFinished ? (
+          <Question
+            question={questions[stage]}
+            userQuestion={question}
+            handleBack={handleBack}
+            handleClick={handleClickThrough}
           />
-        </div>
-      )}
-    </div>
+        ) : (
+          <div>
+            <Answer
+              response={responses[userResponse]}
+              resetPrompt={resetPrompt}
+            />
+          </div>
+        )}
+      </div>
+    </AnimatePresence>
   );
 }
