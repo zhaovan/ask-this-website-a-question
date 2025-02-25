@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./landing-page.module.css";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import CircleLogo from "../../app/components/circle-logo/circle-logo";
 
 export default function LandingPage({ handleClick }) {

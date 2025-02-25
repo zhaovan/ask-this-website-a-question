@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../../button";
+import Button from "../button/button";
 import { motion } from "motion/react";
 import styles from "./styles.module.css";
 

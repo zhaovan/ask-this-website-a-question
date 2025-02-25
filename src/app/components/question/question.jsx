@@ -1,6 +1,6 @@
 import React from "react";
-import Button from "../../button";
-import styles from "./style.module.css";
+import Button from "../button/button";
+import styles from "./styles.module.css";
 import { motion } from "motion/react";
 
 import TypewriterComponent from "typewriter-effect";

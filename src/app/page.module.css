@@ -32,7 +32,10 @@
   width: 100vw;
   opacity: 0.1;
   position: absolute;
+  z-index: 0;
   pointer-events: none !important;
+  /* background-color: lightblue; */
+  opacity: 0.8;
 }
 
 .imageContainer > img {
@@ -100,4 +103,18 @@
   100% {
     opacity: 0;
   }
+}
+
+.lake {
+  opacity: 0.8;
+}
+
+.weatherButtons {
+  display: flex;
+  height: 4rem;
+  gap: 0.5rem;
+  justify-content: end;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 10;
 }

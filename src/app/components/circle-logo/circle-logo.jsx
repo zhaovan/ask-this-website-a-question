@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./style.module.css";
+import styles from "./styles.module.css";
 
 export default function CircleLogo() {
   const SENTENCE = "Ask This Website A Question ❋ ";
@@ -22,6 +22,7 @@ export default function CircleLogo() {
             style={{ "--index": index }}
             className={styles.char}
             key={`${index}-${Math.random()}`}
+            suppressHydrationWarning
           >
             {char}
           </span>

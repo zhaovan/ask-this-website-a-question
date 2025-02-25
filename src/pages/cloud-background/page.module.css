@@ -1,0 +1,10 @@
+.container {
+  background: rgb(87, 126, 193);
+  background: radial-gradient(
+    circle,
+    rgba(87, 126, 193, 1) 12%,
+    rgba(56, 81, 124, 1) 57%,
+    rgba(51, 73, 111, 1) 86%
+  );
+  height: 100vh;
+}

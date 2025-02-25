@@ -1,0 +1,26 @@
+.textRing {
+  position: relative;
+  letter-spacing: 1.5ch;
+  animation: spin 20s infinite linear;
+}
+
+.textRing [style*="--index"] {
+  --font-size: 4;
+  --inner-angle: calc((360 / var(--total)) * 1deg);
+  --radius: calc(
+    (var(--character-width, 1) / sin(var(--inner-angle))) * -1.2ch
+  );
+  font-size: calc(var(--font-size, 2) * 1rem);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%)
+    rotate(calc(var(--inner-angle) * var(--index)))
+    translateY(var(--radius, -5ch));
+}
+
+@keyframes spin {
+  to {
+    rotate: -360deg;
+  }
+}

@@ -50,15 +50,7 @@ export default function Questions({ question, setQuestion, setIsAnswering }) {
   }
 
   return (
-    <div
-      className={styles.container}
-      style={
-        {
-          // "--answer-color-yes": WARM_COLORS[answerColorYes],
-          // "--answer-color-no": COOL_COLORS[answerColorNo],
-        }
-      }
-    >
+    <div className={styles.container}>
       {!isFinished ? (
         <Question
           question={questions[stage]}

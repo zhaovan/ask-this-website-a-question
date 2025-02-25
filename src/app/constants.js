@@ -36,6 +36,7 @@ export const placeholders = [
   "how do i find my person?",
   "quit my job?",
   "go to grad school?",
+  "sell my car?",
 ];
 
 export const questions = [
