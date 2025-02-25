@@ -4,7 +4,6 @@ import styles from "./questions.module.css";
 import { questions, responses } from "../../app/constants";
 import Question from "../../app/components/question/question";
 import Answer from "../../app/components/answer/answer";
-import { AnimatePresence } from "motion/react";
 
 export default function Questions({ question, setQuestion, setIsAnswering }) {
   const [userResponse, setUserResponse] = useState("");
