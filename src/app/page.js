@@ -192,6 +192,7 @@ export default function Home() {
         {landingOpened ? (
           isAnswering ? (
             <Questions
+              question={question}
               setQuestion={setQuestion}
               setIsAnswering={setIsAnswering}
             />
