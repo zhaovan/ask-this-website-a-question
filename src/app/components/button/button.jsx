@@ -1,11 +1,12 @@
 "use client";
 
-import React from "react";
+import { useState } from "react";
 import { motion } from "motion/react";
 import styles from "./styles.module.css";
 
 export default function Button({ children, onClick }) {
-  const buttonAudio = new Audio("/button.mp3");
+  const [buttonAudio, setButtonAudio] = useState(new Audio("/button.mp3"));
+
   function playAudio() {
     buttonAudio.volume = 0.1;
     buttonAudio.play();
