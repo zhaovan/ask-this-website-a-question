@@ -19,7 +19,7 @@ import CloudBackground from "../pages/cloud-background/cloud-background";
 
 const placeholderQuestions = placeholders
   .sort(() => Math.random() - Math.random())
-  .slice(0, 5);
+  .slice(0, 6);
 
 function randomIntFromInterval(min, max) {
   // min and max included
@@ -48,10 +48,11 @@ const WEATHER_STATES = [
 ];
 
 const calculatedPositions = placeholderQuestions.map((_, idx) => {
+  const top = [10, 20, 30, 60, 70, 90];
   const STEP_SIZE = 100 / placeholderQuestions.length;
   return {
     left: Math.round(Math.random() * 85),
-    top: Math.round(Math.random() * STEP_SIZE + idx * STEP_SIZE),
+    top: top[idx],
     animationDelay: Math.random() * 5,
     width: randomIntFromInterval(200, 600),
   };
@@ -88,7 +89,7 @@ export default function Home() {
 
     setCurrentAudio(newAudio); // Update state with the new audio instance
 
-    const fadeIn = setInterval(() => {
+    const intervalId = setInterval(() => {
       if (newAudio.volume < 0.3) {
         newAudio.volume += 0.005;
       }
