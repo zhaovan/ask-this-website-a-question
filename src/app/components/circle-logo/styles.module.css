@@ -24,3 +24,9 @@
     rotate: -360deg;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .textRing [style*="--index"] {
+    --font-size: 2;
+  }
+}

@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../button/button";
 import { motion } from "motion/react";
 import styles from "./styles.module.css";
+import Link from "next/link";
 
 export default function Answer({ response, resetPrompt }) {
   return (
@@ -29,7 +30,15 @@ export default function Answer({ response, resetPrompt }) {
           animate={{ opacity: 1 }}
           transition={{ delay: 4 }}
         >
-          <Button onClick={resetPrompt}>I feel good about my question</Button>
+          <Button>
+            <Link
+              href="https://www.vickitan.com/book"
+              target="_blank"
+              style={{ color: "inherit", textDecoration: "none" }}
+            >
+              I feel good about my question
+            </Link>
+          </Button>
         </motion.div>
         <motion.div
           initial={{ opacity: 0 }}

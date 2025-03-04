@@ -28,13 +28,13 @@
   width: 100%;
 }
 .imageContainer {
-  height: 100vh;
+  max-height: 100vh;
   width: 100vw;
   opacity: 0.1;
   position: absolute;
+  overflow: hidden;
   z-index: 0;
   pointer-events: none !important;
-  /* background-color: lightblue; */
   opacity: 0.8;
 }
 
@@ -117,4 +117,28 @@
   padding: 0 2rem;
   position: relative;
   z-index: 10;
+}
+
+.rain,
+.lake {
+  height: 100vh;
+  max-width: 100vw;
+  width: 100vw;
+  object-fit: contain;
+  background-size: 100% 100%;
+}
+
+@media screen and (max-width: 600px) {
+  .firework {
+    width: 50px !important;
+    height: 50px !important;
+  }
+}
+
+.userQuestion {
+  position: absolute;
+  z-index: 10;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

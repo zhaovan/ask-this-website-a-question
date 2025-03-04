@@ -13,9 +13,9 @@
   filter: drop-shadow(0px 6px var(--button-background-shadow));
   position: relative;
   top: 0px;
-  transition: filter 50ms ease-out;
+  transition: filter 50ms cubic-bezier(0, 1.31, 0.93, 0.9);
 }
 
-.customButton:hover {
+/* .customButton:hover {
   filter: drop-shadow(0 0 var(--button-background-shadow));
-}
+} */

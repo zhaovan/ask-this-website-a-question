@@ -1,6 +1,6 @@
 .container {
   height: 100vh;
-  padding: 30vh 25vw;
+  padding: 20vh 25vw;
   position: relative;
   z-index: 10;
   background: linear-gradient(

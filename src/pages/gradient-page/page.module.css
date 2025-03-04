@@ -32,7 +32,7 @@
 
 .input {
   height: 2.5rem;
-  padding-left: 0.5rem;
+
   color: antiquewhite;
 }
 
@@ -98,4 +98,18 @@
 
 .submitButton:hover {
   background-color: inherit;
+}
+
+@media screen and (max-width: 600px) {
+  .text {
+    font-size: 1rem;
+  }
+  .submitButton {
+    font-size: 1.5rem;
+  }
+  .questionContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

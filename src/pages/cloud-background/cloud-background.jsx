@@ -24,7 +24,7 @@ export default function CloudBackground() {
           calculatedValues[index];
         return (
           <motion.div
-            initial={{ x: "-30vw" }}
+            initial={{ x: "-60vw" }}
             animate={{ x: "150vw" }}
             transition={{
               duration: randomDuration,
@@ -42,7 +42,7 @@ export default function CloudBackground() {
           </motion.div>
         );
       })}
-      <div>
+      <div className={styles.treeContainer}>
         {[...Array(50)].map((_, index) => {
           const left = -30 + index * 4.25;
           return (

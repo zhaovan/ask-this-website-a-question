@@ -16,6 +16,7 @@ import {
   SunHorizon,
 } from "@phosphor-icons/react";
 import CloudBackground from "../pages/cloud-background/cloud-background";
+import Intro from "../pages/intro-page/intro-page";
 
 const placeholderQuestions = placeholders
   .sort(() => Math.random() - Math.random())
@@ -67,6 +68,8 @@ export default function Home() {
   const [weather, setWeather] = useState("lake");
   const [currentAudio, setCurrentAudio] = useState(null);
 
+  const [introOpened, setIntroOpened] = useState(false);
+
   function playAudio(currentWeather) {
     if (currentAudio) {
       currentAudio.pause();
@@ -103,24 +106,16 @@ export default function Home() {
     <div>
       <div className={styles.imageContainer}>
         {weather === "rain" && (
-          <div className={styles.rain}>
-            <Image
-              src="/rain2.gif"
-              layout="fill"
-              alt="rain falling down gif"
-              unoptimized
-            />
-          </div>
+          <div
+            className={styles.rain}
+            style={{ backgroundImage: "url(/rain2.gif)" }}
+          ></div>
         )}
         {weather === "lake" && (
-          <div className={styles.lake}>
-            <Image
-              src="/pond.gif"
-              layout="fill"
-              alt="rain falling down gif"
-              unoptimized
-            />
-          </div>
+          <div
+            className={styles.lake}
+            style={{ backgroundImage: "url(/pond.gif)" }}
+          ></div>
         )}
         {weather === "fog" && (
           <>
@@ -157,6 +152,7 @@ export default function Home() {
 
       {landingOpened &&
         !isAnswering &&
+        introOpened &&
         placeholderQuestions.map((placeholder, idx) => {
           const {
             left: randomLeft,
@@ -190,13 +186,24 @@ export default function Home() {
           );
         })}
       <AnimatePresence>
-        {landingOpened ? (
+        {landingOpened && introOpened ? (
           isAnswering ? (
-            <Questions
-              question={question}
-              setQuestion={setQuestion}
-              setIsAnswering={setIsAnswering}
-            />
+            <>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 4, delay: 2 }}
+                className={styles.userQuestion}
+              >
+                Your Question: Should I {question}
+              </motion.p>
+              <Questions
+                question={question}
+                setQuestion={setQuestion}
+                setIsAnswering={setIsAnswering}
+              />
+            </>
           ) : (
             <GradientLanding
               key="gradient"
@@ -216,6 +223,12 @@ export default function Home() {
             setLandingOpened(true);
             playAudio();
           }}
+        />
+      )}
+      {landingOpened && !introOpened && (
+        <Intro
+          handleClick={() => setIntroOpened(true)}
+          handleBack={() => setLandingOpened(false)}
         />
       )}
     </div>

@@ -11,11 +11,6 @@ export default function Question({
   handleBack,
   userQuestion,
 }) {
-  const replacedQuestion = question.text.replace(
-    "this question",
-    `"Should I ${userQuestion}"`
-  );
-
   return (
     <div className={styles.container} key={question.number}>
       <div className={styles.textContainer}>
@@ -46,7 +41,7 @@ export default function Question({
                 delay: 50,
               }}
               onInit={(typewriter) => {
-                typewriter.pauseFor(2500).typeString(replacedQuestion).start();
+                typewriter.pauseFor(2500).typeString(question.text).start();
               }}
             />
           </motion.span>
